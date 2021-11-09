@@ -1,14 +1,13 @@
 <p align="center"><img src="https://user-images.githubusercontent.com/92972462/138407033-d1661864-0dab-4880-8546-7bbd436f4a06.png" width="200px" alt="Affmates - Linking our world"></p>
 
-# Post data to affmates network
+# API FOR PUBLISHER
 #### Version: 1.0
 
-This package provides a
-simple API to connect with affmates server. To learn all about it please check  document and demo files included
+This package provides some APIs to manipulate with Affmates server. To learn all about it please check  document and demo files included
 
 Here are a few short examples of what you can do:
 
-Flow: get token ---> authorization --> put data
+Flow: get token ---> authorization --> Call API
 
 ### 1. Authentication - Generate token
 ```
@@ -62,7 +61,7 @@ Response can be:
     }
 }
 ```
-### 2. Put data
+### 1. Offer List
 
 <strong>Header</strong>
 + Content-Type: application/json
