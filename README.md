@@ -11,8 +11,8 @@ Flow: get token ---> authorization --> Call API
 
 ### 1. Authentication - Generate token
 ```
-POST /adv/token HTTP/1.1
-Host: postback.affmates.com
+POST /v1/authentication/token HTTP/1.1
+Host: api.affmates.com
 username: _APP_KEY_
 password: _APP_SECRET_
 Content-Type: multipart/form-data;
@@ -20,22 +20,9 @@ Content-Type: multipart/form-data;
 This function will get Refresh Token for Advertiser
 - APP_KEY and APP_SECRET will provide for Advertiser by email
 - Token will expried after 10 days
-- Advertiser can request a lifetime token
+- Publisher can request a lifetime token
 
-##### PHP Example below
-```php
-$curl = curl_init();
-
-$httpHeader = ["username:APP_KEY_","password:APP_SECRET_","Content-Type:application/json"];
-....
-curl_setopt($curl, CURLOPT_URL, "https://postback.affmates.com/adv/token");
-curl_setopt($curl, CURLOPT_HTTPHEADER, $httpHeader);
-.....
-$response = curl_exec($curl);
-$err = curl_error($curl);
-curl_close($curl);
-```
-Response can be:
+<strong>Response</strong>:
 - Code: 400 -  Bad Request
 - Code: 403 -  Forbidden
 - Code: 401 -  Unathorized
@@ -68,72 +55,60 @@ Response can be:
 + Authorization: Bear _TOKEN_
 + TOKEN received from Authentiaction
 
-<strong>Body Request:</strong>
-#### For Lead data (CPA, CPI, CPL)
 ```
-  "leadid": "Conversion ID/Lead ID",                                              (IMPORTANT - REQUIRED)        
-  "create_time": "Time to make conversion - format: 2021-10-22 12:30:21",         (REQUIRED)
-  "publisher_click_id": {Paramerter from affmates publisher},                     (IMPORTANT - REQUIRED)
-  "payout": 16000,   //Commission pay to affmates, can be empty or not set        (Optional)
-  "amount": 200000,  //The package/product price for campaign (can be empty or not set) (Optional)
-  "campaign": "name"   //Campaign id/name or product id/name                      (Optional)
-```
-```
-PUT /adv/conversion HTTP/1.1
-Host: postback.affmates.com
+GET /v1/pub/offer/get HTTP/1.1
+Host: api.affmates.com
 Authorization: Bear _TOKEN_
-Content-Type: application/json
-{
-  "leadid": "143r45",
-  "create_time": "2021-10-21 12:45:00",
-  "publisher_click_id": "12324142",
-  "payout": 16000,
-  "amount": 200000,
-  "campaign": "Campaign ID / Name - Product ID / Name"
-}
 ```
-#### For Order data (CPS)
+<strong>Request Params</strong>
 ```
-  "conversion_id": "Order Code / Conversion ID (Not item conversion id)",         (IMPORTANT - REQUIRED)        
-  "create_time":    "Create time - format: 2021-10-22 12:30:21",                  (REQUIRED)
-  "publisher_click_id": {Paramerter from affmates publisher},                     (IMPORTANT - REQUIRED)
-  "customer": "New"   //Customer name or type: NEW / EXISTING                     (Optional)
-  "campaign": "name"   //Campaign id/name or product id/name                      (Optional)
-  "platform": "web/app"   //Conversion made in                                    (Optional)
-  "items": [
-    {
-      "item_id":"Product Code / Sku"                                              (IMPORTANT - REQUIRED)
-      "item_name": "Product name"                                                 (Optional)
-      "category": "category id / category name"                                   (Optinal) - Need to set if advertiser has many campaigns for each category
-      "quantity":  2     //The number of item for this product                    (REQUIRED - Default: 1)
-      "amount":    100000  //Item price for this product                          (REQUIRED)
-      "payout":    1000     //Commission for this product                         (Optional)
-    },
-    {
-      "item_id":"Product Code / Sku"                                              (IMPORTANT - REQUIRED)
-      "item_name": "Product name"                                                 (Optional)
-      "category": "category id / category name"                                   (Optinal) - Need to set if advertiser has many campaigns for each category
-      "quantity":  2     //The number of item for this product                    (REQUIRED - Default: 1)
-      "amount":    100000  //Item price for this product                          (REQUIRED)
-      "payout":    1000     //Commission for this product                         (Optional)
-    }
-    ....
-  ]
+- adv: Advertiser Id                                            (Optional) - Default:null
+- type: "cps"    // Choose one of: cps/cpa/cpi/cpm/cpc/cpl/     (Optional) - Default: all
+- subscript: "join"   //Get all Offer have joined               (Optional) - Default: null
+- offer:    Offer Id                                            (Optional) - Integer
+- page:     1                                                   (Optional) - Default: 1
 ```
-### 3. Response Data
-Response can be:
+<strong>Response</strong>
+
+```
 - Code: 400 -  Bad Request
 - Code: 403 -  Forbidden
 - Code: 401 -  Unathorized
 - Code: 404 -  Server Not found
 - Code: 408 -  Request Timeout
 - Code: 200 -  Success
-```javascript
 {
     "code": 200,
     "message": "OK",    //Send ok
-    "description": "dup_transaction Conversion: 143r45\n Create success conversion: 203423\n No_subscript Conversion: 2134421", 
-    "data": [Request Data]
+    "description": "", 
+    "data": {
+        "total": 20,
+        "limit": 200,
+        "page": 1,
+        "items":[
+            {
+                "offerId": "16",
+                "offerName": "Offer 1",
+                "advertiser": "watsons",
+                "offerUrl": "https://www.watsons.vn/",
+                "category": "Thời trang và làm đẹp",
+                "type": "cps",
+                "logo": "logo offer",
+                "platform": "web,app",
+                "description":"Description offer",
+                "commission": "6%",
+                "country": "Vietnam",
+                "startDate": "2021-11-06",
+                "endDate": "2022-11-06",
+                "registeredStatus": "joined"
+                "commission": "6%",
+                "country": "Vietnam",
+                "startDate": "2021-11-06",
+                "endDate": "2022-11-06",
+                "registeredStatus": "joined"
+            },
+        ]
+    }
 }
 ```
 
