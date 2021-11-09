@@ -1,0 +1,2 @@
+# publisher
+Affmates Publisher API
