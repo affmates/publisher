@@ -9,7 +9,7 @@ Here are a few short examples of what you can do:
 
 Flow: get token ---> authorization --> Call API
 
-### 1. Authentication - Generate token
+## Authentication - Generate token
 ```
 POST /v1/authentication/token HTTP/1.1
 Host: api.affmates.com
