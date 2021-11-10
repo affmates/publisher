@@ -53,7 +53,7 @@ This function will get Refresh Token for Publisher
 <strong>Header</strong>
 + Content-Type: application/json
 + Authorization: Bear _TOKEN_
-+ TOKEN received from Authentiaction
++ TOKEN received from Authentication
 
 ```
 GET /v1/pub/offer/get HTTP/1.1
@@ -112,7 +112,76 @@ Authorization: Bear _TOKEN_
 }
 ```
 ### 2. Conversion List
+<strong>Header</strong>
++ Content-Type: application/json
++ Authorization: Bear _TOKEN_
++ TOKEN received from Authentication
 
+```
+GET /v1/pub/conversion/get HTTP/1.1
+Host: api.affmates.com
+Authorization: Bear _TOKEN_
+```
+<strong>Request Params</strong>
+```
+- start:  Start date - YYYY-MM-DD. Ex: 2021-12-24               (REQUIRED)
+- end:    End date  - YYYY-MM-DD. Ex: 2021-12-24                (REQUIRED)
+* Only request between 30 days
+- adv: Advertiser Id                                            (Optional) - Default:null
+- channel: "channel_name"                                       (Optional) - Default: null
+- status: "pending"   //Filter status: pending, 
+                               approved, rejected               (Optional) - Default: null
+- offer:    Offer Id                                            (Optional) - Default: null - Integer
+- page:     1                                                   (Optional) - Default: 1
+```
+<strong>Response</strong>
+
+```
+- Code: 400 -  Bad Request
+- Code: 403 -  Forbidden
+- Code: 401 -  Unathorized
+- Code: 404 -  Server Not found
+- Code: 408 -  Request Timeout
+- Code: 200 -  Success
+{
+    "code": 200,
+    "message": "OK",    //Send ok
+    "description": "", 
+    "data": {
+        "total": 5464,
+        "limit": 200,
+        "page": 1,
+        "items":[
+            {
+                "offerId": "3",
+                "offerName": "Shopee CPS",
+                "offerType": "cps",
+                "advertiser": "shopee",
+                "channel": "facebook",
+                "publisherId": "admaster",
+                "conversionId": "c6edeb897d781e170446ddde98695a3c",
+                "orderCode": "210921TJFQB69F",
+                "productCode": "9560800012-35673175659-0_10790164_1",
+                "productName": "[TEM CTY] ATOPICLAIR Cream Helps Relieve Dry Itchy Skin 40mL - Kem Dưỡng Ẩm Da, Giảm Ngứa, Khô Rát.",
+                "categoryCode": "Sức Khỏe & Sắc Đẹp",
+                "qty": 2,
+                "actualAmount": 476270,
+                "commission": 4572.19,
+                "currency": "VND",
+                "adsub1": "",
+                "adsub2": "",
+                "adsub3": "",
+                "platform": "app",
+                "conversionTime": "2021-09-21 15:46:48",
+                "ip_address": "127.0.0.1",
+                "status": "pending",
+                "temporaryApproveReview": "",
+                "clickTime": "2021-10-07 15:38:33"
+            },
+        ]
+    }
+}
+```
 ## Security
 
 If you discover any security related issues, please email [partner@affmates.com](mailto:partner@affmates.com) instead of using the issue tracker.
