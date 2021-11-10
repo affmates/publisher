@@ -1,1 +1,20 @@
+### TOKEN
 
+POST /v1/authentication/token HTTP/1.1
+Host: api.affmates.com
+password: _APP_SECRET_
+username: _APP_KEY_
+Cache-Control: no-cache
+Content-Type: multipart/form-data;
+
+### OFFERS
+GET /v1/pub/offer/get HTTP/1.1
+Host: api.affmates.com
+Authorization: Bear _TOKEN_
+Cache-Control: no-cache
+
+### CONVERSIONS
+GET /v1/pub/conversion/get?start=2021-09-10&amp;end=2021-09-30&amp;page=1 HTTP/1.1
+Host: api.affmates.com
+Authorization: Bear _TOKEN_
+Cache-Control: no-cache
