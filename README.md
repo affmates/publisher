@@ -2,6 +2,13 @@
 
 # API FOR PUBLISHER
 #### Version: 1.0
+#### Table of contents
+
+<!--ts-->
+   * [Authentication](#authentication)
+   * [Offer List](#1-offer-list)
+   * [Conversion List](#2-conversion-list)
+<!--te-->
 
 This package provides some APIs to manipulate with Affmates server. To learn all about it please check  document and demo files included
 
@@ -9,7 +16,7 @@ Here are a few short examples of what you can do:
 
 Flow: get token ---> authorization --> Call API
 
-## Authentication - Generate token
+### Authentication
 ```
 POST /v1/authentication/token HTTP/1.1
 Host: api.affmates.com
