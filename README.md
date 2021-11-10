@@ -175,7 +175,7 @@ Authorization: Bear _TOKEN_
                 "conversionTime": "2021-09-21 15:46:48",
                 "ip_address": "127.0.0.1",
                 "status": "pending",
-                "temporaryApproveReview": "",
+                "temporaryApproveReview": "",               //approved-review and empty - this mean Adv is reviewing for approve
                 "clickTime": "2021-10-07 15:38:33"
             },
         ]
