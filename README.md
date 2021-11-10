@@ -17,8 +17,8 @@ username: _APP_KEY_
 password: _APP_SECRET_
 Content-Type: multipart/form-data;
 ```
-This function will get Refresh Token for Advertiser
-- APP_KEY and APP_SECRET will provide for Advertiser by email
+This function will get Refresh Token for Publisher
+- APP_KEY and APP_SECRET will provide for Publisher in Pub center (pub.affmates.com)
 - Token will expried after 10 days
 - Publisher can request a lifetime token
 
@@ -87,11 +87,11 @@ Authorization: Bear _TOKEN_
         "page": 1,
         "items":[
             {
-                "offerId": "16",
+                "offerId": "1",
                 "offerName": "Offer 1",
-                "advertiser": "watsons",
-                "offerUrl": "https://www.watsons.vn/",
-                "category": "Thời trang và làm đẹp",
+                "advertiser": "shopee",
+                "offerUrl": "https://www.shopee.vn/",
+                "category": "Thương mại điện tử",
                 "type": "cps",
                 "logo": "logo offer",
                 "platform": "web,app",
@@ -111,6 +111,7 @@ Authorization: Bear _TOKEN_
     }
 }
 ```
+### 2. Conversion List
 
 ## Security
 
