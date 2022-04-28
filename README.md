@@ -8,6 +8,7 @@
    * [Authentication](#authentication)
    * [Offer List](#1-offer-list)
    * [Conversion List](#2-conversion-list)
+   * [products List](#3-product-list)
 <!--te-->
 
 This package provides some APIs to manipulate with Affmates server. To learn all about it please check  document and demo files included
@@ -189,6 +190,91 @@ Authorization: Bear _TOKEN_
     }
 }
 ```
+### 3. Product List
+
+<strong>Header</strong>
++ Content-Type: application/json
++ Authorization: Bear _TOKEN_
++ TOKEN received from Authentication
+
+```
+GET /v1/pub/products/get HTTP/1.1
+Host: api.affmates.com
+Authorization: Bear _TOKEN_
+```
+<strong>Request Params</strong>
+```
+- adv: "tiki" | "lazada"                                        (Optional) - Default:null
+- category: "dien-thoai-di-dong"                                (Optional) - Default: all
+- page:     1                                                   (Optional) - Default: 1
+```
+<strong>Response</strong>
+
+```
+- Code: 400 -  Bad Request
+- Code: 403 -  Forbidden
+- Code: 401 -  Unathorized
+- Code: 404 -  Server Not found
+- Code: 408 -  Request Timeout
+- Code: 200 -  Success
+{
+  "code": 200,
+    "message": "OK",
+    "description": "",
+    "data": {
+        "total": 90,
+        "limit": 200,
+        "page": 1,
+        "items": [
+            {
+                "offer": "lazada",
+                "productCode": "275590387_VNAMZ",
+                "productName": "Máy may gia đình, máy may mini CMD-26 cho đường may chính xác, sáng tạo, đảm đang tại nhà ( TẶNG KÈM BÀN ĐẠP - CÓ THỂ DÙNG PIN THAY THẾ)",
+                "category": "do-gia-dung-nho",
+                "categoryName": "Đồ gia dụng nhỏ,Đồ gia dụng nhỏ",
+                "image": "https://vn-test-11.slatic.net/p/34dc9949543e26baa12a5b19cceea7db.jpg",
+                "price": "227160",
+                "originPrice": "450000",
+                "url": "https://www.lazada.vn/products/may-may-gia-dinh-may-may-mini-cmd-26-cho-duong-may-chinh-xac-sang-tao-dam-dang-tai-nha-tang-kem-ban-dap-co-the-dung-pin-thay-the-i275590387.html",
+                "trackingUrl": "https://cre-ads.com/deeplink/admaster?url=https%3A%2F%2Fwww.lazada.vn%2Fproducts%2Fmay-may-gia-dinh-may-may-mini-cmd-26-cho-duong-may-chinh-xac-sang-tao-dam-dang-tai-nha-tang-kem-ban-dap-co-the-dung-pin-thay-the-i275590387.html",
+                "thumbnails": "[{\"image\":\"https:\\/\\/vn-live-01.slatic.net\\/p\\/34dc9949543e26baa12a5b19cceea7db.jpg\"}]",
+                "createDate": "2022-04-28 02:14:21",
+                "updateDate": "2022-04-28 02:14:21"
+            },
+            {
+                "offer": "lazada",
+                "productCode": "993178805_VNAMZ",
+                "productName": "Máy hút bụi cầm tay đa năng, máy hút bụi oto có đầu bơm hơi, hút bụi gia đình công suất lớn, lực hút khỏe, bơm hơi oto, đèn led hiển thị, an toàn tiện lợi, bảo hành chính hãng 2 năm, lỗi đổi mới trong",
+                "category": "do-gia-dung-nho",
+                "categoryName": "Đồ gia dụng nhỏ,Đồ gia dụng nhỏ",
+                "image": "https://vn-test-11.slatic.net/p/52342d95f535d5984572da2754710a02.jpg",
+                "price": "356780",
+                "originPrice": "730000",
+                "url": "https://www.lazada.vn/products/may-hut-bui-cam-tay-da-nang-may-hut-bui-oto-co-dau-bom-hoi-hut-bui-gia-dinh-cong-suat-lon-luc-hut-khoe-bom-hoi-oto-den-led-hien-thi-an-toan-tien-loi-bao-hanh-chinh-hang-2-nam-loi-doi-moi-trong-vong-7-ngay-dau-i993178805.html",
+                "trackingUrl": "https://cre-ads.com/deeplink/admaster?url=https%3A%2F%2Fwww.lazada.vn%2Fproducts%2Fmay-hut-bui-cam-tay-da-nang-may-hut-bui-oto-co-dau-bom-hoi-hut-bui-gia-dinh-cong-suat-lon-luc-hut-khoe-bom-hoi-oto-den-led-hien-thi-an-toan-tien-loi-bao-hanh-chinh-hang-2-nam-loi-doi-moi-trong-vong-7-ngay-dau-i993178805.html",
+                "thumbnails": "[{\"image\":\"https:\\/\\/vn-live-01.slatic.net\\/p\\/3feb59419c802e0d12c017e9a2c2a300.jpg\"},{\"image\":\"https:\\/\\/vn-live-01.slatic.net\\/p\\/52342d95f535d5984572da2754710a02.jpg\"}]",
+                "createDate": "2022-04-28 02:14:21",
+                "updateDate": "2022-04-28 02:14:21"
+            },
+            {
+                "offer": "lazada",
+                "productCode": "355688866_VNAMZ",
+                "productName": "Robot hút bụi lau nhà ECOVACS DE53 Lực hút 1000PA, Độ ồn 50dB, Pin 3000mAh Hàng trưng bày mới 99%",
+                "category": "do-gia-dung-nho",
+                "categoryName": "Đồ gia dụng nhỏ,Đồ gia dụng nhỏ",
+                "image": "https://vn-test-11.slatic.net/p/mdc/2143a2fd00801be0ada87eef39544090.jpg",
+                "price": "2990000",
+                "originPrice": "4500000",
+                "url": "https://www.lazada.vn/products/robot-hut-bui-lau-nha-ecovacs-de53-luc-hut-1000pa-do-on-50db-pin-3000mah-hang-trung-bay-moi-99-i355688866.html",
+                "trackingUrl": "https://cre-ads.com/deeplink/admaster?url=https%3A%2F%2Fwww.lazada.vn%2Fproducts%2Frobot-hut-bui-lau-nha-ecovacs-de53-luc-hut-1000pa-do-on-50db-pin-3000mah-hang-trung-bay-moi-99-i355688866.html",
+                "thumbnails": "[{\"image\":\"https:\\/\\/vn-live-01.slatic.net\\/p\\/mdc\\/2143a2fd00801be0ada87eef39544090.jpg\"}]",
+                "createDate": "2022-04-28 02:14:21",
+                "updateDate": "2022-04-28 02:14:21"
+            }
+        ]
+}
+```
+
 ## Security
 
 If you discover any security related issues, please email [partner@affmates.com](mailto:partner@affmates.com) instead of using the issue tracker.
